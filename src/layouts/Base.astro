@@ -1,0 +1,292 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Nelson's Portfolio" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      const saved = localStorage.getItem('theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || preferred);
+    </script>
+
+    <title>{title} — Nelson</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="nav-logo">NM</a>
+        <ul class="nav-links">
+          <li>
+            <a href="/" class:list={["nav-link", { active: currentPath === "/" }]}>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/projects" class:list={["nav-link", { active: currentPath.startsWith("/projects") }]}>
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class:list={["nav-link", { active: currentPath.startsWith("/contact") }]}>
+              Contact
+            </a>
+          </li>
+        </ul>
+
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <span class="footer-left">© {new Date().getFullYear()} Nelson Martinel</span>
+      <span class="footer-divider">·</span>
+      <a href="https://github.com/Nelson-Mart" target="_blank" rel="noopener" class="footer-link">
+        GitHub
+      </a>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+
+      toggle?.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* ── Reset ─────────────────────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Dark theme (default) ───────────────────────────── */
+  :root,
+  [data-theme="dark"] {
+    --bg:        #0e0e0f;
+    --bg-card:   #161618;
+    --border:    #2a2a2d;
+    --text:      #e7e6e8;
+    --muted:     #6b6b70;
+    --accent:    #7b61ff;
+    --accent-dim:#3d2fad;
+  }
+
+  /* ── Light theme ────────────────────────────────────── */
+  [data-theme="light"] {
+    --bg:        #f5f7fa;
+    --bg-card:   #ffffff;
+    --border:    #dde1e9;
+    --text:      #111214;
+    --muted:     #7a7f8a;
+    --accent:    #2563eb;
+    --accent-dim:#1d4ed8;
+  }
+
+  /* ── Tokens ─────────────────────────────────────────── */
+  :root {
+    --font-mono: "DM Mono", monospace;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+    --nav-h: 64px;
+  }
+
+  /* ── Base ─────────────────────────────────────────── */
+  html {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ── Nav ─────────────────────────────────────────── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(12px);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  nav {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    transition: opacity 0.15s;
+  }
+
+  .nav-logo:hover {
+    opacity: 0.75;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+    position: relative;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--text);
+  }
+
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* ── Theme toggle ────────────────────────────────────── */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: border-color 0.15s, background 0.15s;
+    line-height: 1;
+  }
+
+  .theme-toggle:hover {
+    background: var(--bg-card);
+  }
+
+  /* Show correct icon per theme */
+  [data-theme="dark"] .icon-sun  { display: inline; }
+  [data-theme="dark"] .icon-moon { display: none;   }
+  [data-theme="light"] .icon-sun  { display: none;   }
+  [data-theme="light"] .icon-moon { display: inline; }
+
+  /* ── Main ─────────────────────────────────────────── */
+  main {
+    flex: 1;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+
+  /* ── Footer ─────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .footer-link {
+    transition: color 0.15s;
+  }
+
+  .footer-link:hover {
+    color: var(--text);
+  }
+
+  /* ── Utilities ─────────────────────────────────────── */
+  .mono {
+    font-family: var(--font-mono);
+  }
+
+  /* ── Reduced motion ────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── Mobile ────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .nav-links {
+      gap: 20px;
+    }
+
+    main {
+      padding: 40px 16px;
+    }
+  }
+</style>

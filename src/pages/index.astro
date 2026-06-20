@@ -1,17 +1,776 @@
 ---
+import Base from '../layouts/Base.astro'
 
+// Fetch LeetCode at build time — no CORS issues
+let lc = { totalSolved: '—', easySolved: '—', mediumSolved: '—', hardSolved: '—', ranking: '—' }
+try {
+  const res = await fetch('https://leetcode-stats.tashif.codes/nelsonLeetcoding')
+  if (res.ok) {
+    const data = await res.json()
+    lc = {
+      totalSolved: data.totalSolved,
+      easySolved:  data.easySolved,
+      mediumSolved: data.mediumSolved,
+      hardSolved:  data.hardSolved,
+      ranking:     data.ranking?.toLocaleString() ?? '—'
+    }
+  }
+} catch {}
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="Home" description="Nelson Martinel — Full Stack Developer based in Belgium">
+
+  <!-- ── Aurora blobs ─────────────────────────────────── -->
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- ── Hero ────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span>Available for work</span>
+    </div>
+    <h1>
+      Hey, I'm <span class="accent">Nelson Martinel</span>
+    </h1>
+    <p class="hero-sub">
+      Full Stack Developer · {new Date().getFullYear() - 2005} · Based in Belgium
+    </p>
+    <p class="hero-desc">
+      Graduate programming student at Artevelde University of Applied Sciences,
+      building web apps from frontend to backend. I care about clean code,
+      good UX, and shipping things that actually work.
+    </p>
+    <div class="hero-actions">
+      <a href="/projects" class="btn btn-primary">View Projects</a>
+      <a href="/contact" class="btn btn-ghost">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- ── About ────────────────────────────────────────── -->
+  <section class="section">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <i class="ti ti-map-pin" aria-hidden="true"></i>
+        <div>
+          <p class="about-card-title">Location</p>
+          <p class="about-card-value">Ghent, Belgium</p>
+        </div>
+      </div>
+      <div class="about-card">
+        <i class="ti ti-school" aria-hidden="true"></i>
+        <div>
+          <p class="about-card-title">Education</p>
+          <p class="about-card-value">Graduate Programming · Artevelde</p>
+        </div>
+      </div>
+      <div class="about-card">
+        <i class="ti ti-cake" aria-hidden="true"></i>
+        <div>
+          <p class="about-card-title">Age</p>
+          <p class="about-card-value">{new Date().getFullYear() - 2005} years old</p>
+        </div>
+      </div>
+      <div class="about-card">
+        <i class="ti ti-code" aria-hidden="true"></i>
+        <div>
+          <p class="about-card-title">Focus</p>
+          <p class="about-card-value">Full Stack Development</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Currently ────────────────────────────────────── -->
+  <section class="section">
+    <p class="section-label">Currently</p>
+    <div class="currently-grid">
+      <div class="currently-item">
+        <span class="currently-key">Building</span>
+        <span class="currently-val">My portfolio with Astro + Supabase</span>
+      </div>
+      <div class="currently-item">
+        <span class="currently-key">Learning</span>
+        <span class="currently-val">TypeScript & system design patterns</span>
+      </div>
+      <div class="currently-item">
+        <span class="currently-key">Studying</span>
+        <span class="currently-val">Graduate Programming at Artevelde</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tech carousel ────────────────────────────────── -->
+  <section class="section">
+    <p class="section-label">Languages</p>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel-langs">
+        {["HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue", "PHP", "EJS"].map(lang => (
+          <span class="chip">{lang}</span>
+        ))}
+        {["HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue", "PHP", "EJS"].map(lang => (
+          <span class="chip" aria-hidden="true">{lang}</span>
+        ))}
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top: 2rem;">Technologies</p>
+    <div class="carousel-wrapper">
+      <div class="carousel carousel-reverse" id="carousel-tech">
+        {["Next.js", "Tailwind", "Supabase", "Prisma", "Expo", "Astro", "SQL", "Vite", "Node.js", "CraftCMS"].map(tech => (
+          <span class="chip chip-tech">{tech}</span>
+        ))}
+        {["Next.js", "Tailwind", "Supabase", "Prisma", "Expo", "Astro", "SQL", "Vite", "Node.js", "CraftCMS"].map(tech => (
+          <span class="chip chip-tech" aria-hidden="true">{tech}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience ────────────────────────────────────── -->
+  <section class="section">
+    <p class="section-label">Experience</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <span class="timeline-title">Graduate Programming Student</span>
+            <span class="timeline-date">2023 — Present</span>
+          </div>
+          <span class="timeline-place">Artevelde University of Applied Sciences · Ghent</span>
+          <p class="timeline-desc">
+            Studying full stack web development, software architecture, databases, and modern frameworks. Working on real-world projects as part of the curriculum.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <span class="timeline-title">Personal Projects & Freelance</span>
+            <span class="timeline-date">2022 — Present</span>
+          </div>
+          <span class="timeline-place">Self-employed</span>
+          <p class="timeline-desc">
+            Building full stack applications using React, Next.js, Supabase, and other modern tools. Delivering web solutions for small clients and personal projects.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LeetCode activity -->
+    <div class="leetcode-card">
+      <div class="leetcode-header">
+        <span class="leetcode-title">LeetCode</span>
+        <a
+          href="https://leetcode.com/nelsonLeetcoding"
+          target="_blank"
+          rel="noopener"
+          class="leetcode-link"
+        >
+          View profile <i class="ti ti-external-link" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="leetcode-stats" id="lc-stats">
+        <div class="lc-stat">
+          <span class="lc-num">{lc.totalSolved}</span>
+          <span class="lc-label">Solved</span>
+        </div>
+        <div class="lc-stat lc-easy">
+          <span class="lc-num">{lc.easySolved}</span>
+          <span class="lc-label">Easy</span>
+        </div>
+        <div class="lc-stat lc-medium">
+          <span class="lc-num">{lc.mediumSolved}</span>
+          <span class="lc-label">Medium</span>
+        </div>
+        <div class="lc-stat lc-hard">
+          <span class="lc-num">{lc.hardSolved}</span>
+          <span class="lc-label">Hard</span>
+        </div>
+      </div>
+      <p class="lc-note" id="lc-note">Ranking #{lc.ranking}</p>
+    </div>
+  </section>
+
+  <!-- ── Featured projects ─────────────────────────────── -->
+  <section class="section">
+    <div class="section-row">
+      <p class="section-label">Featured Projects</p>
+      <a href="/projects" class="section-link">All projects <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+      <div class="project-placeholder">
+        <p>Connect Supabase to show your projects here.</p>
+        <a href="/projects" class="btn btn-ghost" style="margin-top:12px; font-size:0.8rem;">Go to projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Social links ──────────────────────────────────── -->
+  <section class="section">
+    <p class="section-label">Links</p>
+    <div class="social-grid">
+      <a href="https://github.com/Nelson-Mart" target="_blank" rel="noopener" class="social-card">
+        <i class="ti ti-brand-github" aria-hidden="true"></i>
+        <span>GitHub</span>
+        <i class="ti ti-arrow-right arrow" aria-hidden="true"></i>
+      </a>
+      <a href="https://linkedin.com/in/nelson-martinel-529546358" target="_blank" rel="noopener" class="social-card">
+        <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+        <span>LinkedIn</span>
+        <i class="ti ti-arrow-right arrow" aria-hidden="true"></i>
+      </a>
+      <a href="mailto:nelson@example.com" class="social-card">
+        <i class="ti ti-mail" aria-hidden="true"></i>
+        <span>Email</span>
+        <i class="ti ti-arrow-right arrow" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+</Base>
+
+<!-- Tabler icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+<style>
+  /* ── Aurora blobs ────────────────────────────────────── */
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+
+  /* purple — top left, near hero */
+  .blob-1 {
+    width: 520px;
+    height: 520px;
+    background: #7b61ff;
+    top: -120px;
+    left: -100px;
+    animation-duration: 20s;
+  }
+
+  /* teal — top right */
+  .blob-2 {
+    width: 400px;
+    height: 400px;
+    background: #06b6d4;
+    top: 60px;
+    right: -80px;
+    animation-duration: 24s;
+    animation-delay: -6s;
+  }
+
+  /* pink — mid page */
+  .blob-3 {
+    width: 350px;
+    height: 350px;
+    background: #ec4899;
+    top: 55%;
+    left: 30%;
+    animation-duration: 22s;
+    animation-delay: -10s;
+  }
+
+  /* indigo — bottom right */
+  .blob-4 {
+    width: 440px;
+    height: 440px;
+    background: #6366f1;
+    bottom: 5%;
+    right: -60px;
+    animation-duration: 26s;
+    animation-delay: -4s;
+  }
+
+  @keyframes drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(30px, -40px) scale(1.05); }
+    66%  { transform: translate(-20px, 30px) scale(0.97); }
+    100% { transform: translate(40px, 20px) scale(1.03); }
+  }
+
+  /* tone blobs down in light mode */
+  [data-theme="light"] .blob {
+    opacity: 0.10;
+    filter: blur(100px);
+  }
+
+  /* make sure all page content sits above the blobs */
+  :global(main > *) {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .hero {
+    padding: 48px 0 80px;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+    50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.05); }
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 560px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Buttons ─────────────────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s, background 0.15s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover { background: var(--bg-card); }
+
+  /* ── Section chrome ──────────────────────────────────── */
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .section-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .section-row .section-label { margin-bottom: 0; }
+
+  .section-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.15s;
+  }
+
+  .section-link:hover { gap: 8px; }
+
+  /* ── About grid ──────────────────────────────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .about-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .about-card .ti {
+    font-size: 1.2rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .about-card-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .about-card-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* ── Currently ───────────────────────────────────────── */
+  .currently-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .currently-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .currently-item:last-child { border-bottom: none; }
+
+  .currently-key {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    min-width: 72px;
+    letter-spacing: 0.04em;
+  }
+
+  .currently-val {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  /* ── Carousel ────────────────────────────────────────── */
+  .carousel-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .carousel {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    animation: scroll-left 20s linear infinite;
+  }
+
+  .carousel-reverse {
+    animation: scroll-right 22s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @keyframes scroll-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  .carousel-wrapper:hover .carousel {
+    animation-play-state: paused;
+  }
+
+  .chip {
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text);
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s;
+    cursor: default;
+  }
+
+  .chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .chip-tech {
+    color: var(--muted);
+  }
+
+  .chip-tech:hover {
+    color: var(--accent);
+  }
+
+  /* ── Timeline ────────────────────────────────────────── */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    border-left: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+  }
+
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -29px;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .timeline-place {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .timeline-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── LeetCode card ───────────────────────────────────── */
+  .leetcode-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+
+  .leetcode-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .leetcode-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .leetcode-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .leetcode-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .lc-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .lc-num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .lc-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .lc-easy .lc-num  { color: #22c55e; }
+  .lc-medium .lc-num { color: #f59e0b; }
+  .lc-hard .lc-num  { color: #ef4444; }
+
+  .lc-note {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ── Projects placeholder ────────────────────────────── */
+  .projects-grid {
+    min-height: 120px;
+  }
+
+  .project-placeholder {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  /* ── Social grid ─────────────────────────────────────── */
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .social-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .social-card:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 6%, var(--bg-card));
+  }
+
+  .social-card .ti:first-child {
+    font-size: 1.2rem;
+    color: var(--accent);
+  }
+
+  .social-card .arrow {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: transform 0.15s;
+  }
+
+  .social-card:hover .arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  /* ── Mobile ──────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .hero { padding: 32px 0 60px; }
+    .leetcode-stats { grid-template-columns: repeat(2, 1fr); }
+    .timeline-header { flex-direction: column; gap: 2px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none; }
+  }
+</style>
