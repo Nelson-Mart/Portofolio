@@ -1,7 +1,13 @@
 ---
 import Base from '../layouts/Base.astro'
 
-// Fetch LeetCode at build time — no CORS issues
+const today = new Date()
+const birth = new Date(2005, 1, 17)
+let age = today.getFullYear() - birth.getFullYear()
+if (today < new Date(today.getFullYear(), 1, 17)) age--
+
+
+// Fetch LeetCode at build time
 let lc = { totalSolved: '—', easySolved: '—', mediumSolved: '—', hardSolved: '—', ranking: '—' }
 try {
   const res = await fetch('https://leetcode-stats.tashif.codes/nelsonLeetcoding')
@@ -38,10 +44,10 @@ try {
       Hey, I'm <span class="accent">Nelson Martinel</span>
     </h1>
     <p class="hero-sub">
-      Full Stack Developer · {new Date().getFullYear() - 2005} · Based in Belgium
+      Full Stack Developer · {age} · Based in Belgium
     </p>
     <p class="hero-desc">
-      Graduate programming student at Artevelde University of Applied Sciences,
+      Graduate programming student at Artevelde Hogeschool, passionate about
       building web apps from frontend to backend. I care about clean code,
       good UX, and shipping things that actually work.
     </p>
@@ -73,7 +79,7 @@ try {
         <i class="ti ti-cake" aria-hidden="true"></i>
         <div>
           <p class="about-card-title">Age</p>
-          <p class="about-card-value">{new Date().getFullYear() - 2005} years old</p>
+          <p class="about-card-value">{age} years old</p>
         </div>
       </div>
       <div class="about-card">
@@ -122,10 +128,10 @@ try {
     <p class="section-label" style="margin-top: 2rem;">Technologies</p>
     <div class="carousel-wrapper">
       <div class="carousel carousel-reverse" id="carousel-tech">
-        {["Next.js", "Tailwind", "Supabase", "Prisma", "Expo", "Astro", "SQL", "Vite", "Node.js", "CraftCMS"].map(tech => (
+        {["Next.js", "Tailwind", "Supabase", "Prisma", "Expo", "Astro", "SQL", "sqlite", "Vite", "Node.js", "CraftCMS", "Docker"].map(tech => (
           <span class="chip chip-tech">{tech}</span>
         ))}
-        {["Next.js", "Tailwind", "Supabase", "Prisma", "Expo", "Astro", "SQL", "Vite", "Node.js", "CraftCMS"].map(tech => (
+        {["Next.js", "Tailwind", "Supabase", "Prisma", "Expo", "Astro", "SQL", "sqlite", "Vite", "Node.js", "CraftCMS", "Docker"].map(tech => (
           <span class="chip chip-tech" aria-hidden="true">{tech}</span>
         ))}
       </div>
@@ -143,7 +149,7 @@ try {
             <span class="timeline-title">Graduate Programming Student</span>
             <span class="timeline-date">2023 — Present</span>
           </div>
-          <span class="timeline-place">Artevelde University of Applied Sciences · Ghent</span>
+          <span class="timeline-place">Artevelde Hogeschool · Ghent</span>
           <p class="timeline-desc">
             Studying full stack web development, software architecture, databases, and modern frameworks. Working on real-world projects as part of the curriculum.
           </p>
@@ -400,10 +406,21 @@ try {
   .btn-primary {
     background: var(--accent);
     color: #fff;
-    border: 1px solid var(--accent);
+    background-image: linear-gradient(
+      105deg,
+      var(--accent-dim) 0%,
+      var(--accent-dim) 50%,
+      var(--accent) 50%
+    );
+    background-size: 250% 250%;
+    background-position: 100% 0%;
+    transition: background-position 0.6s ease-in-out;
   }
 
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover {
+    background-position: 0% 100%;
+    border-color: none;
+  }
 
   .btn-ghost {
     background: transparent;

@@ -1,6 +1,479 @@
-astro---
+---
 import Base from '../layouts/Base.astro';
 ---
+
 <Base title="Contact">
-  <h1>Contact Us</h1>
+
+  <!-- ── Header ───────────────────────────────────────── -->
+  <section class="page-header">
+    <p class="page-eyebrow">Get in touch</p>
+    <h1>Contact</h1>
+    <p class="page-desc">
+      Have a project in mind, a question, or just want to connect?
+      Feel free to reach out — I'll get back to you as soon as I can.
+    </p>
+  </section>
+
+  <div class="contact-layout">
+
+    <!-- ── Left: contact info ───────────────────────────── -->
+    <div class="contact-info">
+
+      <div class="info-group">
+        <p class="info-label">Direct contact</p>
+        <div class="info-cards">
+          <a href="mailto:nelsonmartinel2@gmail.com" class="info-card">
+            <div class="info-icon">
+              <i class="ti ti-mail"></i>
+            </div>
+            <div>
+              <p class="info-card-label">Email</p>
+              <p class="info-card-value">nelsonmartinel2@gmail.com</p>
+            </div>
+            <i class="ti ti-arrow-right info-arrow"></i>
+          </a>
+
+          <a href="tel:+32499843625" class="info-card">
+            <div class="info-icon">
+              <i class="ti ti-phone"></i>
+            </div>
+            <div>
+              <p class="info-card-label">Phone</p>
+              <p class="info-card-value">0499 84 36 25</p>
+            </div>
+            <i class="ti ti-arrow-right info-arrow"></i>
+          </a>
+
+          <a href="https://linkedin.com/in/nelson-martinel-529546358" target="_blank" rel="noopener" class="info-card">
+            <div class="info-icon">
+              <i class="ti ti-brand-linkedin"></i>
+            </div>
+            <div>
+              <p class="info-card-label">LinkedIn</p>
+              <p class="info-card-value">nelson-martinel</p>
+            </div>
+            <i class="ti ti-arrow-right info-arrow"></i>
+          </a>
+
+          <a href="https://github.com/Nelson-Mart" target="_blank" rel="noopener" class="info-card">
+            <div class="info-icon">
+              <i class="ti ti-brand-github"></i>
+            </div>
+            <div>
+              <p class="info-card-label">GitHub</p>
+              <p class="info-card-value">Nelson-Mart</p>
+            </div>
+            <i class="ti ti-arrow-right info-arrow"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="info-group">
+        <p class="info-label">Availability</p>
+        <div class="availability-card">
+          <div class="avail-row">
+            <span class="dot-green"></span>
+            <span>Open to internships & freelance work</span>
+          </div>
+          <div class="avail-row">
+            <i class="ti ti-map-pin"></i>
+            <span>Ghent, Belgium — remote friendly</span>
+          </div>
+          <div class="avail-row">
+            <i class="ti ti-clock"></i>
+            <span>Usually replies within 24 hours</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Right: form ──────────────────────────────────── -->
+    <div class="contact-form-wrap">
+      <p class="info-label">Send a message</p>
+      <form class="contact-form" id="contact-form" novalidate>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?" required />
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me more..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">
+          <span id="btn-text">Send message</span>
+          <i class="ti ti-send" id="btn-icon"></i>
+        </button>
+
+        <div class="form-feedback" id="form-feedback" aria-live="polite"></div>
+      </form>
+    </div>
+
+  </div>
+
 </Base>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+<script>
+  const form     = document.getElementById('contact-form') as HTMLFormElement
+  const btn      = document.getElementById('submit-btn') as HTMLButtonElement
+  const btnText  = document.getElementById('btn-text')!
+  const btnIcon  = document.getElementById('btn-icon')!
+  const feedback = document.getElementById('form-feedback')!
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    // Basic validation
+    const name    = (document.getElementById('name') as HTMLInputElement).value.trim()
+    const email   = (document.getElementById('email') as HTMLInputElement).value.trim()
+    const subject = (document.getElementById('subject') as HTMLInputElement).value.trim()
+    const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim()
+
+    if (!name || !email || !subject || !message) {
+      showFeedback('Please fill in all fields.', 'error')
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      showFeedback('Please enter a valid email address.', 'error')
+      return
+    }
+
+    // Loading state
+    btn.disabled = true
+    btnText.textContent = 'Sending…'
+    btnIcon.className = 'ti ti-loader-2 spin'
+
+    // Build mailto as fallback (replace with Supabase insert if you want to store messages)
+    try {
+      await new Promise(r => setTimeout(r, 800)) // simulate network
+      const mailto = `mailto:nelsonmartinel2@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`
+      window.location.href = mailto
+
+      showFeedback('Opening your email client…', 'success')
+      form.reset()
+    } catch {
+      showFeedback('Something went wrong. Please email me directly.', 'error')
+    } finally {
+      btn.disabled = false
+      btnText.textContent = 'Send message'
+      btnIcon.className = 'ti ti-send'
+    }
+  })
+
+  function showFeedback(msg: string, type: 'success' | 'error') {
+    feedback.textContent = msg
+    feedback.className = `form-feedback show ${type}`
+    setTimeout(() => feedback.classList.remove('show'), 5000)
+  }
+</script>
+
+<style>
+  /* ── Page header ─────────────────────────────────────── */
+  .page-header {
+    padding: 48px 0 56px;
+    max-width: 560px;
+  }
+
+  .page-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .page-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── Layout ──────────────────────────────────────────── */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── Info group ──────────────────────────────────────── */
+  .info-group {
+    margin-bottom: 32px;
+  }
+
+  .info-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* ── Info cards ──────────────────────────────────────── */
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .info-card:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 5%, var(--bg-card));
+  }
+
+  .info-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+    background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+
+  .info-card-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .info-card-value {
+    font-size: 0.82rem;
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  .info-arrow {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition: transform 0.15s, color 0.15s;
+  }
+
+  .info-card:hover .info-arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  /* ── Availability card ───────────────────────────────── */
+  .availability-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .avail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
+
+  .avail-row .ti {
+    font-size: 0.95rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .dot-green {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+    50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.05); }
+  }
+
+  /* ── Form ────────────────────────────────────────────── */
+  .contact-form-wrap {
+    position: sticky;
+    top: calc(var(--nav-h) + 24px);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 14px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  input,
+  textarea {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+
+  /* ── Submit button ───────────────────────────────────── */
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 24px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    background-image: linear-gradient(
+      105deg,
+      var(--accent-dim) 0%,
+      var(--accent-dim) 50%,
+      var(--accent) 50%
+    );
+    background-size: 250% 250%;
+    background-position: 100% 0%;
+    transition: background-position 0.5s ease-in-out;
+  }
+
+  .btn-submit:hover:not(:disabled) {
+    background-position: 0% 100%;
+  }
+
+  .btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* ── Feedback ────────────────────────────────────────── */
+  .form-feedback {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+    min-height: 1.2em;
+  }
+
+  .form-feedback.show { opacity: 1; }
+  .form-feedback.success { color: #22c55e; }
+  .form-feedback.error   { color: #ef4444; }
+
+  /* ── Spin animation for loader icon ─────────────────── */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .spin { animation: spin 0.8s linear infinite; }
+
+  /* ── Mobile ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .contact-form-wrap {
+      position: static;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
