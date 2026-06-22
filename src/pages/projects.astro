@@ -97,7 +97,7 @@ const typeColors: Record<string, string> = {
           </div>
 
           <span class="card-cta">
-            View details <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            View details <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
           </span>
         </button>
       ))}
@@ -108,7 +108,11 @@ const typeColors: Record<string, string> = {
   <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" id="modal">
       <button class="modal-close" id="modal-close" aria-label="Close">
-        <i class="ti ti-x"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 6l-12 12" />
+          <path d="M6 6l12 12" />
+        </svg>
       </button>
 
       <div class="modal-body">
@@ -134,8 +138,6 @@ const typeColors: Record<string, string> = {
 
 </Base>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-
 <script>
   const backdrop = document.getElementById('modal-backdrop')!
   const modal    = document.getElementById('modal')!
@@ -148,29 +150,26 @@ const typeColors: Record<string, string> = {
     document.getElementById('modal-title')!.textContent = data.title
     document.getElementById('modal-desc')!.textContent  = data.description
 
-    // Stack tags
     const stackEl = document.getElementById('modal-stack')!
     stackEl.innerHTML = data.stack.map((s: string) =>
       `<span class="stack-tag">${s}</span>`
     ).join('')
 
-    // Learned list
     const learnedEl = document.getElementById('modal-learned')!
     learnedEl.innerHTML = data.learned.map((l: string) =>
       `<li>${l}</li>`
     ).join('')
 
-    // Links
     const linksEl = document.getElementById('modal-links')!
     linksEl.innerHTML = ''
     if (data.github) {
       linksEl.innerHTML += `<a href="${data.github}" target="_blank" rel="noopener" class="modal-link">
-        <i class="ti ti-brand-github"></i> GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> GitHub
       </a>`
     }
     if (data.live) {
-      linksEl.innerHTML += `<a href="${data.live}" target="_blank" rel="noopener" class="modal-link modal-link-primary">
-        <i class="ti ti-external-link"></i> Live site
+      linksEl.innerHTML += `<a href="${data.live}" target="_blank" rel="noopener" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg> Live site
       </a>`
     }
 
@@ -195,7 +194,6 @@ const typeColors: Record<string, string> = {
     return map[type] ?? 'var(--accent)'
   }
 
-  // Open on card click
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
       const data = JSON.parse((card as HTMLElement).dataset.project || '{}')
@@ -203,20 +201,18 @@ const typeColors: Record<string, string> = {
     })
   })
 
-  // Close on backdrop click
   backdrop.addEventListener('click', (e) => {
     if (e.target === backdrop) closeModal()
   })
 
-  // Close button
   closeBtn.addEventListener('click', closeModal)
 
-  // Close on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal()
   })
 </script>
 
+<!-- Dynamically injected elements need is:global to bypass Astro scoping -->
 <style is:global>
   .modal-learned {
     list-style: none;
@@ -261,17 +257,6 @@ const typeColors: Record<string, string> = {
   .modal-link:hover {
     border-color: var(--accent);
     background: color-mix(in srgb, var(--accent) 8%, var(--bg));
-  }
-
-  .modal-link-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-
-  .modal-link-primary:hover {
-    background: var(--accent-dim);
-    border-color: var(--accent-dim);
   }
 
   .modal-stack {
@@ -343,7 +328,7 @@ const typeColors: Record<string, string> = {
     position: relative;
     border: none;
   }
-  
+
   .project-card::before {
     content: "";
     position: absolute;
@@ -358,7 +343,7 @@ const typeColors: Record<string, string> = {
     mask-composite: exclude;
     transition: background 0.3s;
   }
-  
+
   .project-card:hover::before {
     background: conic-gradient(
       from var(--angle),
@@ -370,18 +355,18 @@ const typeColors: Record<string, string> = {
     );
     animation: spin-gradient 2s linear infinite;
   }
-  
+
   .project-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   }
-  
+
   @property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
   }
-  
+
   @keyframes spin-gradient {
     from { --angle: 0deg; }
     to   { --angle: 360deg; }
@@ -447,9 +432,7 @@ const typeColors: Record<string, string> = {
     transition: gap 0.15s;
   }
 
-  .project-card:hover .card-cta {
-    gap: 8px;
-  }
+  .project-card:hover .card-cta { gap: 8px; }
 
   /* ── Modal backdrop ──────────────────────────────────── */
   .modal-backdrop {
@@ -487,9 +470,7 @@ const typeColors: Record<string, string> = {
     outline: none;
   }
 
-  .modal-backdrop.open .modal {
-    transform: translateY(0);
-  }
+  .modal-backdrop.open .modal { transform: translateY(0); }
 
   .modal-close {
     position: absolute;
@@ -562,43 +543,11 @@ const typeColors: Record<string, string> = {
     margin-bottom: 12px;
   }
 
-
   .modal-links {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     padding-top: 4px;
-  }
-
-  .modal-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    border: 1px solid var(--border);
-    color: var(--text);
-    background: var(--bg);
-    transition: border-color 0.15s, background 0.15s;
-    text-decoration: none;
-  }
-
-  .modal-link:hover {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 8%, var(--bg));
-  }
-
-  .modal-link-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-
-  .modal-link-primary:hover {
-    background: var(--accent-dim);
-    border-color: var(--accent-dim);
   }
 
   /* ── Mobile ──────────────────────────────────────────── */

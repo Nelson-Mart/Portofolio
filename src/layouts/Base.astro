@@ -35,6 +35,14 @@ const currentPath = Astro.url.pathname;
   </head>
 
   <body>
+    <!-- ── Aurora blobs ───────────────────────────────── -->
+    <div class="aurora" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="blob blob-4"></div>
+    </div>
+
     <header>
       <nav>
         <a href="/" class="nav-logo">NM</a>
@@ -149,6 +157,74 @@ const currentPath = Astro.url.pathname;
     text-decoration: none;
   }
 
+  /* ── Aurora blobs ────────────────────────────────────── */
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+
+  .blob-1 {
+    width: 520px;
+    height: 520px;
+    background: #7b61ff;
+    top: -120px;
+    left: -100px;
+    animation-duration: 20s;
+  }
+
+  .blob-2 {
+    width: 400px;
+    height: 400px;
+    background: #06b6d4;
+    top: 60px;
+    right: -80px;
+    animation-duration: 24s;
+    animation-delay: -6s;
+  }
+
+  .blob-3 {
+    width: 350px;
+    height: 350px;
+    background: #ec4899;
+    top: 55%;
+    left: 30%;
+    animation-duration: 22s;
+    animation-delay: -10s;
+  }
+
+  .blob-4 {
+    width: 440px;
+    height: 440px;
+    background: #6366f1;
+    bottom: 5%;
+    right: -60px;
+    animation-duration: 26s;
+    animation-delay: -4s;
+  }
+
+  @keyframes drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(30px, -40px) scale(1.05); }
+    66%  { transform: translate(-20px, 30px) scale(0.97); }
+    100% { transform: translate(40px, 20px) scale(1.03); }
+  }
+
+  [data-theme="light"] .blob {
+    opacity: 0.10;
+    filter: blur(100px);
+  }
+
   /* ── Nav ─────────────────────────────────────────── */
   header {
     position: sticky;
@@ -230,7 +306,6 @@ const currentPath = Astro.url.pathname;
     background: var(--bg-card);
   }
 
-  /* Show correct icon per theme */
   [data-theme="dark"] .icon-sun  { display: inline; }
   [data-theme="dark"] .icon-moon { display: none;   }
   [data-theme="light"] .icon-sun  { display: none;   }
@@ -243,6 +318,8 @@ const currentPath = Astro.url.pathname;
     width: 100%;
     margin: 0 auto;
     padding: 64px 24px;
+    position: relative;
+    z-index: 1;
   }
 
   /* ── Footer ─────────────────────────────────────────── */
@@ -253,9 +330,13 @@ const currentPath = Astro.url.pathname;
     justify-content: center;
     align-items: center;
     gap: 12px;
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(12px);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--muted);
+    position: relative;
+    z-index: 1;
   }
 
   .footer-link {
@@ -264,6 +345,57 @@ const currentPath = Astro.url.pathname;
 
   .footer-link:hover {
     color: var(--text);
+  }
+
+  /* ── Buttons ─────────────────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: var(--font-sans);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    background-image: linear-gradient(
+      105deg,
+      var(--accent-dim) 0%,
+      var(--accent-dim) 50%,
+      var(--accent) 50%
+    );
+    background-size: 250% 250%;
+    background-position: 100% 0%;
+    transition: background-position 0.6s ease-in-out;
+  }
+
+  .btn-primary:hover {
+    background-position: 0% 100%;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .btn-ghost:hover {
+    background: var(--bg-card);
+  }
+
+  /* ── icons ─────────────────────────────────────────── */
+
+  svg.icon {
+    width: 1em;
+    height: 1em;
   }
 
   /* ── Utilities ─────────────────────────────────────── */

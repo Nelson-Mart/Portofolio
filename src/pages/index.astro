@@ -6,7 +6,6 @@ const birth = new Date(2005, 1, 17)
 let age = today.getFullYear() - birth.getFullYear()
 if (today < new Date(today.getFullYear(), 1, 17)) age--
 
-
 // Fetch LeetCode at build time
 let lc = { totalSolved: '—', easySolved: '—', mediumSolved: '—', hardSolved: '—', ranking: '—' }
 try {
@@ -26,14 +25,6 @@ try {
 
 <Base title="Home" description="Nelson Martinel — Full Stack Developer based in Belgium">
 
-  <!-- ── Aurora blobs ─────────────────────────────────── -->
-  <div class="aurora" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-  </div>
-
   <!-- ── Hero ────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-eyebrow">
@@ -43,9 +34,13 @@ try {
     <h1>
       Hey, I'm <span class="accent">Nelson Martinel</span>
     </h1>
-    <p class="hero-sub">
-      Full Stack Developer · {age} · Based in Belgium
-    </p>
+    <div class="hero-sub">
+      <p>
+        Full Stack Developer · {age} · Based in Belgium
+        <img src="/belgian-flag.png" alt="belgian flag" aria-hidden="true"/>
+      </p>
+      
+    </div>
     <p class="hero-desc">
       Graduate programming student at Artevelde Hogeschool, passionate about
       building web apps from frontend to backend. I care about clean code,
@@ -62,28 +57,28 @@ try {
     <p class="section-label">About</p>
     <div class="about-grid">
       <div class="about-card">
-        <i class="ti ti-map-pin" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" /></svg>
         <div>
           <p class="about-card-title">Location</p>
           <p class="about-card-value">Ghent, Belgium</p>
         </div>
       </div>
       <div class="about-card">
-        <i class="ti ti-school" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg>
         <div>
           <p class="about-card-title">Education</p>
           <p class="about-card-value">Graduate Programming · Artevelde</p>
         </div>
       </div>
       <div class="about-card">
-        <i class="ti ti-cake" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 20h18v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8" /><path d="M3 14.803c.312 .135 .654 .204 1 .197a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1c.35 .007 .692 -.062 1 -.197" /><path d="M12 4l1.465 1.638a2 2 0 1 1 -3.015 .099l1.55 -1.737" /></svg>
         <div>
           <p class="about-card-title">Age</p>
           <p class="about-card-value">{age} years old</p>
         </div>
       </div>
       <div class="about-card">
-        <i class="ti ti-code" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></svg>
         <div>
           <p class="about-card-title">Focus</p>
           <p class="about-card-value">Full Stack Development</p>
@@ -181,10 +176,10 @@ try {
           rel="noopener"
           class="leetcode-link"
         >
-          View profile <i class="ti ti-external-link" aria-hidden="true"></i>
+          View profile <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
         </a>
       </div>
-      <div class="leetcode-stats" id="lc-stats">
+      <div class="leetcode-stats">
         <div class="lc-stat">
           <span class="lc-num">{lc.totalSolved}</span>
           <span class="lc-label">Solved</span>
@@ -202,7 +197,7 @@ try {
           <span class="lc-label">Hard</span>
         </div>
       </div>
-      <p class="lc-note" id="lc-note">Ranking #{lc.ranking}</p>
+      <p class="lc-note">Ranking #{lc.ranking}</p>
     </div>
   </section>
 
@@ -210,7 +205,7 @@ try {
   <section class="section">
     <div class="section-row">
       <p class="section-label">Featured Projects</p>
-      <a href="/projects" class="section-link">All projects <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      <a href="/projects" class="section-link">All projects <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg></a>
     </div>
     <div class="projects-grid" id="projects-grid">
       <div class="project-placeholder">
@@ -225,108 +220,26 @@ try {
     <p class="section-label">Links</p>
     <div class="social-grid">
       <a href="https://github.com/Nelson-Mart" target="_blank" rel="noopener" class="social-card">
-        <i class="ti ti-brand-github" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
         <span>GitHub</span>
-        <i class="ti ti-arrow-right arrow" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon arrow" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
       </a>
       <a href="https://linkedin.com/in/nelson-martinel-529546358" target="_blank" rel="noopener" class="social-card">
-        <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 1 0 -4 0" /><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" /></svg>
         <span>LinkedIn</span>
-        <i class="ti ti-arrow-right arrow" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon arrow" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
       </a>
-      <a href="mailto:nelson@example.com" class="social-card">
-        <i class="ti ti-mail" aria-hidden="true"></i>
+      <a href="mailto:nelsonmartinel2@gmail.com" class="social-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M3 7l9 6l9 -6" /></svg>
         <span>Email</span>
-        <i class="ti ti-arrow-right arrow" aria-hidden="true"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon arrow" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
       </a>
     </div>
   </section>
 
 </Base>
 
-<!-- Tabler icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-
 <style>
-  /* ── Aurora blobs ────────────────────────────────────── */
-  .aurora {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.18;
-    animation: drift 18s ease-in-out infinite alternate;
-  }
-
-  /* purple — top left, near hero */
-  .blob-1 {
-    width: 520px;
-    height: 520px;
-    background: #7b61ff;
-    top: -120px;
-    left: -100px;
-    animation-duration: 20s;
-  }
-
-  /* teal — top right */
-  .blob-2 {
-    width: 400px;
-    height: 400px;
-    background: #06b6d4;
-    top: 60px;
-    right: -80px;
-    animation-duration: 24s;
-    animation-delay: -6s;
-  }
-
-  /* pink — mid page */
-  .blob-3 {
-    width: 350px;
-    height: 350px;
-    background: #ec4899;
-    top: 55%;
-    left: 30%;
-    animation-duration: 22s;
-    animation-delay: -10s;
-  }
-
-  /* indigo — bottom right */
-  .blob-4 {
-    width: 440px;
-    height: 440px;
-    background: #6366f1;
-    bottom: 5%;
-    right: -60px;
-    animation-duration: 26s;
-    animation-delay: -4s;
-  }
-
-  @keyframes drift {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(30px, -40px) scale(1.05); }
-    66%  { transform: translate(-20px, 30px) scale(0.97); }
-    100% { transform: translate(40px, 20px) scale(1.03); }
-  }
-
-  /* tone blobs down in light mode */
-  [data-theme="light"] .blob {
-    opacity: 0.10;
-    filter: blur(100px);
-  }
-
-  /* make sure all page content sits above the blobs */
-  :global(main > *) {
-    position: relative;
-    z-index: 1;
-  }
-
   /* ── Hero ───────────────────────────────────────────── */
   .hero {
     padding: 48px 0 80px;
@@ -368,11 +281,24 @@ try {
   .accent { color: var(--accent); }
 
   .hero-sub {
+    display: flex;
+    flex-direction: row;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+    gap: 8px;
     color: var(--muted);
     margin-bottom: 20px;
     letter-spacing: 0.04em;
+  }
+
+  .hero-sub p {
+    align-items: center;
+  }
+
+  .hero-sub img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
   }
 
   .hero-desc {
@@ -388,47 +314,6 @@ try {
     gap: 12px;
     flex-wrap: wrap;
   }
-
-  /* ── Buttons ─────────────────────────────────────────── */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 22px;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: opacity 0.15s, background 0.15s;
-    text-decoration: none;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    background-image: linear-gradient(
-      105deg,
-      var(--accent-dim) 0%,
-      var(--accent-dim) 50%,
-      var(--accent) 50%
-    );
-    background-size: 250% 250%;
-    background-position: 100% 0%;
-    transition: background-position 0.6s ease-in-out;
-  }
-
-  .btn-primary:hover {
-    background-position: 0% 100%;
-    border-color: none;
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-
-  .btn-ghost:hover { background: var(--bg-card); }
 
   /* ── Section chrome ──────────────────────────────────── */
   .section {
@@ -482,8 +367,8 @@ try {
     border-radius: 8px;
   }
 
-  .about-card .ti {
-    font-size: 1.2rem;
+  .about-card .icon {
+    font-size: 1.5rem;
     color: var(--accent);
     flex-shrink: 0;
   }
@@ -504,7 +389,6 @@ try {
   .currently-grid {
     display: flex;
     flex-direction: column;
-    gap: 0;
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
@@ -578,18 +462,9 @@ try {
     cursor: default;
   }
 
-  .chip:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .chip-tech {
-    color: var(--muted);
-  }
-
-  .chip-tech:hover {
-    color: var(--accent);
-  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip-tech { color: var(--muted); }
+  .chip-tech:hover { color: var(--accent); }
 
   /* ── Timeline ────────────────────────────────────────── */
   .timeline {
@@ -626,10 +501,7 @@ try {
     margin-bottom: 4px;
   }
 
-  .timeline-title {
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
+  .timeline-title { font-weight: 500; font-size: 0.95rem; }
 
   .timeline-date {
     font-family: var(--font-mono);
@@ -723,9 +595,7 @@ try {
   }
 
   /* ── Projects placeholder ────────────────────────────── */
-  .projects-grid {
-    min-height: 120px;
-  }
+  .projects-grid { min-height: 120px; }
 
   .project-placeholder {
     border: 1px dashed var(--border);
@@ -763,7 +633,7 @@ try {
     background: color-mix(in srgb, var(--accent) 6%, var(--bg-card));
   }
 
-  .social-card .ti:first-child {
+  .social-card .icon:first-child {
     font-size: 1.2rem;
     color: var(--accent);
   }
@@ -785,9 +655,5 @@ try {
     .hero { padding: 32px 0 60px; }
     .leetcode-stats { grid-template-columns: repeat(2, 1fr); }
     .timeline-header { flex-direction: column; gap: 2px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .blob { animation: none; }
   }
 </style>
