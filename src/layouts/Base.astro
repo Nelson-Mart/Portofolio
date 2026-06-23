@@ -64,9 +64,125 @@ const currentPath = Astro.url.pathname;
           </li>
         </ul>
 
+        <!-- ── Theme Toggle ── -->
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <span class="icon-sun">☀️</span>
-          <span class="icon-moon">🌙</span>
+          <svg class="toggle-track" viewBox="0 0 88 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <!-- Track background -->
+            <rect class="track-bg" x="0" y="0" width="88" height="44" rx="20" ry="50"/>
+
+            <!-- ── LIGHT MODE CONTENT ── -->
+            <g class="light-content">
+              <!-- Cloud 1 (main) -->
+              <g class="cloud cloud-1">
+                <svg xmlns="http://www.w3.org/2000/svg" x="20" y="25" width="18" height="12" viewBox="0 0 18 12" fill="none">
+                  <ellipse cx="14.2991" cy="7.48596" rx="3.70093" ry="3.61682" fill="#EDEBED"/>
+                  <ellipse cx="14.2149" cy="10.514" rx="0.588785" ry="0.588785" fill="#DBD9DC"/>
+                  <ellipse cx="3.19626" cy="7.57012" rx="3.19626" ry="3.53271" fill="#DBD9DC"/>
+                  <ellipse cx="5.8037" cy="4.79436" rx="3.4486" ry="3.4486" fill="#DBD9DC"/>
+                  <rect x="3.3645" y="9.58881" width="10.7664" height="1.51402" fill="#DBD9DC"/>
+                  <rect x="6.72894" y="7.40186" width="7.57009" height="2.52336" fill="#EDEBED"/>
+                  <ellipse cx="10.1775" cy="4.28972" rx="4.45794" ry="4.28972" fill="#EDEBED"/>
+                  <ellipse cx="7.06544" cy="6.30841" rx="3.70093" ry="3.61682" fill="#EDEBED"/>
+                </svg>
+              </g>
+              <!-- Cloud 2 (small bg) -->
+              <g class="cloud cloud-2">
+                <svg xmlns="http://www.w3.org/2000/svg" x="10" y="12" width="18" height="12" viewBox="0 0 18 12" fill="none">
+                  <ellipse cx="14.2991" cy="7.48596" rx="3.70093" ry="3.61682" fill="#EDEBED"/>
+                  <ellipse cx="14.2149" cy="10.514" rx="0.588785" ry="0.588785" fill="#DBD9DC"/>
+                  <ellipse cx="3.19626" cy="7.57012" rx="3.19626" ry="3.53271" fill="#DBD9DC"/>
+                  <ellipse cx="5.8037" cy="4.79436" rx="3.4486" ry="3.4486" fill="#DBD9DC"/>
+                  <rect x="3.3645" y="9.58881" width="10.7664" height="1.51402" fill="#DBD9DC"/>
+                  <rect x="6.72894" y="7.40186" width="7.57009" height="2.52336" fill="#EDEBED"/>
+                  <ellipse cx="10.1775" cy="4.28972" rx="4.45794" ry="4.28972" fill="#EDEBED"/>
+                  <ellipse cx="7.06544" cy="6.30841" rx="3.70093" ry="3.61682" fill="#EDEBED"/>
+                </svg>
+              </g>
+              <!-- Birds -->
+              <g class="birds">
+                <g class="bird bird-1">
+                  <path d="M 30 20 Q 33 17 36 20" stroke="#4a7ab5" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                  <path d="M 36 20 Q 39 17 42 20" stroke="#4a7ab5" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                </g>
+                <g class="bird bird-2">
+                  <path d="M 26 28 Q 28 26 30 28" stroke="#4a7ab5" stroke-width="1" fill="none" stroke-linecap="round"/>
+                  <path d="M 30 28 Q 32 26 34 28" stroke="#4a7ab5" stroke-width="1" fill="none" stroke-linecap="round"/>
+                </g>
+                <g class="bird bird-3">
+                  <path d="M 34 14 Q 36 12 38 14" stroke="#4a7ab5" stroke-width="1" fill="none" stroke-linecap="round"/>
+                  <path d="M 38 14 Q 40 12 42 14" stroke="#4a7ab5" stroke-width="1" fill="none" stroke-linecap="round"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- ── DARK MODE CONTENT ── -->
+            <g class="dark-content">
+              <!-- Stars -->
+              <g class="star star-1" transform="translate(70, 7) scale(0.22)">
+                <path d="M26 13C13 13 13 13 13 26C13 13 13 13 0 13C13 13 13 13 13 0C13 13 13 13 26 13Z" fill="white"/>
+              </g>
+               <!-- Star 2 -->
+                <g class="star star-2" transform="translate(60, 17) scale(0.22)">
+                  <path d="M26 13C13 13 13 13 13 26C13 13 13 13 0 13C13 13 13 13 13 0C13 13 13 13 26 13Z" fill="white"/>
+                </g>
+                <!-- Star 3 -->
+                <g class="star star-3" transform="translate(40, 24) scale(0.22)">
+                  <path d="M26 13C13 13 13 13 13 26C13 13 13 13 0 13C13 13 13 13 13 0C13 13 13 13 26 13Z" fill="white"/>
+                </g>
+                <!-- Star 4 (small) -->
+                <g class="star star-4" transform="translate(51, 8) scale(0.165)">
+                  <path d="M26 13C13 13 13 13 13 26C13 13 13 13 0 13C13 13 13 13 13 0C13 13 13 13 26 13Z" fill="white"/>
+                </g>
+                <!-- Star 5 (big) -->
+                <g class="star star-5" transform="translate(60, 31) scale(0.30)">
+                  <path d="M26 13C13 13 13 13 13 26C13 13 13 13 0 13C13 13 13 13 13 0C13 13 13 13 26 13Z" fill="white"/>
+                </g>
+                <!-- Star 6 (tiny) -->
+                <g class="star star-6" transform="translate(40, 15) scale(0.11)">
+                  <path d="M26 13C13 13 13 13 13 26C13 13 13 13 0 13C13 13 13 13 13 0C13 13 13 13 26 13Z" fill="white"/>
+                </g>
+              <!-- Meteors -->
+              <g class="meteor meteor-1">
+                <line x1="0" y1="0" x2="-16" y2="16" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
+                <line x1="0" y1="0" x2="-10" y2="10" stroke="white" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+              </g>
+              <g class="meteor meteor-2">
+                <line x1="0" y1="0" x2="-12" y2="12" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+                <line x1="0" y1="0" x2="-7" y2="7" stroke="white" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+              </g>
+              <g class="meteor meteor-3">
+                <line x1="0" y1="0" x2="-10" y2="10" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+              </g>
+            </g>
+
+            <!-- ── SUN ── -->
+            <g class="sun-group">
+              <!-- Glow ring -->
+              <circle class="sun-glow" cx="66" cy="22" r="20" fill="#f59e0b" opacity="0.25"/>
+              <!-- Sun body -->
+              <circle cx="66" cy="22" r="14" fill="#f59e0b"/>
+              <circle cx="66" cy="22" r="11" fill="#fbbf24"/>
+              <!-- Craters/texture on sun -->
+              <circle cx="62" cy="20" r="2.5" fill="#f59e0b" opacity="0.6"/>
+              <circle cx="69" cy="25" r="1.8" fill="#f59e0b" opacity="0.5"/>
+              <circle cx="65" cy="27" r="1.2" fill="#e08800" opacity="0.4"/>
+            </g>
+
+            <!-- ── MOON ── -->
+            <g class="moon-group">
+              <!-- Moon body -->
+              <circle cx="22" cy="22" r="14" fill="#c8c8d8"/>
+              <circle cx="22" cy="22" r="13" fill="#d8d8e8"/>
+              <!-- Moon craters -->
+              <circle cx="17" cy="18" r="3.5" fill="#b8b8cc"/>
+              <circle cx="26" cy="28" r="2.8" fill="#b8b8cc"/>
+              <circle cx="19" cy="28" r="1.8" fill="#c0c0d0"/>
+              <circle cx="28" cy="17" r="1.5" fill="#b8b8cc"/>
+              <!-- Crater rim highlights -->
+              <circle cx="16.5" cy="17.5" r="3.5" fill="none" stroke="#cacada" stroke-width="0.5"/>
+              <circle cx="25.5" cy="27.5" r="2.8" fill="none" stroke="#cacada" stroke-width="0.5"/>
+            </g>
+          </svg>
         </button>
       </nav>
     </header>
@@ -175,40 +291,29 @@ const currentPath = Astro.url.pathname;
   }
 
   .blob-1 {
-    width: 520px;
-    height: 520px;
+    width: 520px; height: 520px;
     background: #7b61ff;
-    top: -120px;
-    left: -100px;
+    top: -120px; left: -100px;
     animation-duration: 20s;
   }
-
   .blob-2 {
-    width: 400px;
-    height: 400px;
+    width: 400px; height: 400px;
     background: #06b6d4;
-    top: 60px;
-    right: -80px;
+    top: 60px; right: -80px;
     animation-duration: 24s;
     animation-delay: -6s;
   }
-
   .blob-3 {
-    width: 350px;
-    height: 350px;
+    width: 350px; height: 350px;
     background: #ec4899;
-    top: 55%;
-    left: 30%;
+    top: 55%; left: 30%;
     animation-duration: 22s;
     animation-delay: -10s;
   }
-
   .blob-4 {
-    width: 440px;
-    height: 440px;
+    width: 440px; height: 440px;
     background: #6366f1;
-    bottom: 5%;
-    right: -60px;
+    bottom: 5%; right: -60px;
     animation-duration: 26s;
     animation-delay: -4s;
   }
@@ -255,10 +360,7 @@ const currentPath = Astro.url.pathname;
     letter-spacing: 0.05em;
     transition: opacity 0.15s;
   }
-
-  .nav-logo:hover {
-    opacity: 0.75;
-  }
+  .nav-logo:hover { opacity: 0.75; }
 
   .nav-links {
     list-style: none;
@@ -274,42 +376,165 @@ const currentPath = Astro.url.pathname;
     transition: color 0.15s;
     position: relative;
   }
-
   .nav-link:hover,
-  .nav-link.active {
-    color: var(--text);
-  }
-
+  .nav-link.active { color: var(--text); }
   .nav-link.active::after {
     content: "";
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
+    bottom: -4px; left: 0; right: 0;
     height: 1px;
     background: var(--accent);
   }
 
-  /* ── Theme toggle ────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════
+     THEME TOGGLE
+  ══════════════════════════════════════════════════════ */
   .theme-toggle {
     background: none;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 6px 10px;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    font-size: 0.85rem;
-    transition: border-color 0.15s, background 0.15s;
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    overflow: hidden;
+    border-radius: 50px;
   }
 
-  .theme-toggle:hover {
-    background: var(--bg-card);
+  .toggle-track {
+    width: 88px;
+    height: 44px;
+    display: block;
+    overflow: visible;
   }
 
-  [data-theme="dark"] .icon-sun  { display: inline; }
-  [data-theme="dark"] .icon-moon { display: none;   }
-  [data-theme="light"] .icon-sun  { display: none;   }
-  [data-theme="light"] .icon-moon { display: inline; }
+  /* Track background color per theme */
+  [data-theme="dark"]  .track-bg { fill: #2d1f6e; }
+  [data-theme="light"] .track-bg { fill: #7ec8e3; }
+
+  /* ── Show/hide content per theme ── */
+  [data-theme="dark"]  .light-content { display: none; }
+  [data-theme="light"] .dark-content  { display: none; }
+
+  /* ── Sun & Moon slide transition ── */
+  [data-theme="dark"] .sun-group {
+    transform: translateX(60px);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.3s;
+  }
+  [data-theme="dark"] .moon-group {
+    transform: translateX(0px);
+    transition: transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  [data-theme="light"] .moon-group {
+    transform: translateX(-60px);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.3s;
+  }
+  [data-theme="light"] .sun-group {
+    transform: translateX(0px);
+    opacity: 1;
+    transition: transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.3s;
+  }
+
+  /* ── Sun glow pulse ── */
+  [data-theme="light"] .sun-glow {
+    animation: sun-pulse 3s ease-in-out infinite alternate;
+  }
+  @keyframes sun-pulse {
+    from { r: 18; opacity: 0.2; }
+    to   { r: 22; opacity: 0.35; }
+  }
+
+  /* ── Cloud drift ── */
+  [data-theme="light"] .cloud-1 {
+    animation: cloud-drift-1 5s ease-in-out infinite alternate;
+  }
+  [data-theme="light"] .cloud-2 {
+    animation: cloud-drift-2 7s ease-in-out infinite alternate;
+  }
+  @keyframes cloud-drift-1 {
+    from { transform: translateX(0px); }
+    to   { transform: translateX(6px); }
+  }
+  @keyframes cloud-drift-2 {
+    from { transform: translateX(0px); }
+    to   { transform: translateX(-5px); }
+  }
+
+  /* ── Bird wing flap ── */
+  [data-theme="light"] .bird-1 {
+    animation: bird-flap 0.5s ease-in-out infinite alternate;
+    transform-origin: 36px 20px;
+  }
+  [data-theme="light"] .bird-2 {
+    animation: bird-flap 0.5s ease-in-out infinite alternate;
+    animation-delay: 0.15s;
+    transform-origin: 30px 28px;
+  }
+  [data-theme="light"] .bird-3 {
+    animation: bird-flap 0.5s ease-in-out infinite alternate;
+    animation-delay: 0.3s;
+    transform-origin: 38px 14px;
+  }
+  @keyframes bird-flap {
+    from { transform: scaleY(1); }
+    to   { transform: scaleY(0.5); }
+  }
+
+  /* ── Stars twinkle ── */
+  .star path {
+    transform-box: fill-box;
+    transform-origin: center center;
+  }
+
+  [data-theme="dark"] .star-1 path { animation: twinkle 2.1s ease-in-out infinite alternate; }
+  [data-theme="dark"] .star-2 path { animation: twinkle 2.8s ease-in-out infinite alternate; animation-delay: 0.4s; }
+  [data-theme="dark"] .star-3 path { animation: twinkle 1.9s ease-in-out infinite alternate; animation-delay: 0.8s; }
+  [data-theme="dark"] .star-4 path { animation: twinkle 2.5s ease-in-out infinite alternate; animation-delay: 0.2s; }
+  [data-theme="dark"] .star-5 path { animation: twinkle 3.0s ease-in-out infinite alternate; animation-delay: 1.1s; }
+  [data-theme="dark"] .star-6 path { animation: twinkle 2.3s ease-in-out infinite alternate; animation-delay: 0.6s; }
+
+  @keyframes twinkle {
+    from { transform: scale(1);   opacity: 0.6; }
+    to   { transform: scale(1.8); opacity: 1;   }
+  }
+
+  /* ── Meteors ── */
+  /* meteor-1: starts top-left outside, shoots diagonally in */
+  [data-theme="dark"] .meteor-1 {
+    animation: meteor-fall-1 3s linear infinite;
+    animation-delay: 0s;
+  }
+  [data-theme="dark"] .meteor-2 {
+    animation: meteor-fall-2 4s linear infinite;
+    animation-delay: 1.2s;
+  }
+  [data-theme="dark"] .meteor-3 {
+    animation: meteor-fall-3 3.5s linear infinite;
+    animation-delay: 2.4s;
+  }
+
+  @keyframes meteor-fall-1 {
+    0%   { transform: translate(80px, -5px);  opacity: 0; }
+    8%   { opacity: 1; }
+    70%  { opacity: 0.85; }
+    100% { transform: translate(15px, 52px);  opacity: 0; }
+  }
+  @keyframes meteor-fall-2 {
+    0%   { transform: translate(95px, 0px);   opacity: 0; }
+    8%   { opacity: 1; }
+    70%  { opacity: 0.75; }
+    100% { transform: translate(35px, 48px);  opacity: 0; }
+  }
+  @keyframes meteor-fall-3 {
+    0%   { transform: translate(110px, -8px);  opacity: 0; }
+    8%   { opacity: 0.9; }
+    70%  { opacity: 0.8; }
+    100% { transform: translate(60px, 44px);  opacity: 0; }
+  }
 
   /* ── Main ─────────────────────────────────────────── */
   main {
@@ -338,14 +563,8 @@ const currentPath = Astro.url.pathname;
     position: relative;
     z-index: 1;
   }
-
-  .footer-link {
-    transition: color 0.15s;
-  }
-
-  .footer-link:hover {
-    color: var(--text);
-  }
+  .footer-link { transition: color 0.15s; }
+  .footer-link:hover { color: var(--text); }
 
   /* ── Buttons ─────────────────────────────────────────── */
   .btn {
@@ -360,7 +579,6 @@ const currentPath = Astro.url.pathname;
     text-decoration: none;
     font-family: var(--font-sans);
   }
-
   .btn-primary {
     background: var(--accent);
     color: #fff;
@@ -375,33 +593,20 @@ const currentPath = Astro.url.pathname;
     background-position: 100% 0%;
     transition: background-position 0.6s ease-in-out;
   }
-
-  .btn-primary:hover {
-    background-position: 0% 100%;
-  }
-
+  .btn-primary:hover { background-position: 0% 100%; }
   .btn-ghost {
     background: transparent;
     color: var(--text);
     border: 1px solid var(--border);
     transition: background 0.15s;
   }
-
-  .btn-ghost:hover {
-    background: var(--bg-card);
-  }
+  .btn-ghost:hover { background: var(--bg-card); }
 
   /* ── icons ─────────────────────────────────────────── */
-
-  svg.icon {
-    width: 1em;
-    height: 1em;
-  }
+  svg.icon { width: 1em; height: 1em; }
 
   /* ── Utilities ─────────────────────────────────────── */
-  .mono {
-    font-family: var(--font-mono);
-  }
+  .mono { font-family: var(--font-mono); }
 
   /* ── Reduced motion ────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
@@ -413,12 +618,7 @@ const currentPath = Astro.url.pathname;
 
   /* ── Mobile ────────────────────────────────────────── */
   @media (max-width: 600px) {
-    .nav-links {
-      gap: 20px;
-    }
-
-    main {
-      padding: 40px 16px;
-    }
+    .nav-links { gap: 20px; }
+    main { padding: 40px 16px; }
   }
 </style>
