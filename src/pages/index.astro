@@ -27,28 +27,36 @@ try {
 
   <!-- ── Hero ────────────────────────────────────────── -->
   <section class="hero">
-    <div class="hero-eyebrow">
-      <span class="dot"></span>
-      <span>Available for work</span>
-    </div>
-    <h1>
-      Hey, I'm <span class="accent">Nelson Martinel</span>
-    </h1>
-    <div class="hero-sub">
-      <p>
-        Full Stack Developer · {age} · Based in Belgium
-        <img src="/belgian-flag.png" alt="belgian flag" aria-hidden="true"/>
-      </p>
-      
-    </div>
-    <p class="hero-desc">
-      Graduate programming student at Artevelde Hogeschool, passionate about
-      building web apps from frontend to backend. I care about clean code,
-      good UX, and shipping things that actually work.
-    </p>
-    <div class="hero-actions">
-      <a href="/projects" class="btn btn-primary">View Projects</a>
-      <a href="/contact" class="btn btn-ghost">Contact Me</a>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span>Available for work</span>
+        </div>
+        <h1>
+          Hey, I'm <span class="accent">Nelson Martinel</span>
+        </h1>
+        <div class="hero-sub">
+          <p>
+            Full Stack Developer · {age} · Based in Belgium
+            <img src="/belgian-flag.png" alt="belgian flag" aria-hidden="true"/>
+          </p>
+        </div>
+        <p class="hero-desc">
+          Graduate programming student at <a class="highlighted" href="https://www.arteveldehogeschool.be/" target="_blank" rel="noopener noreferrer">Artevelde Hogeschool</a>, passionate about
+          building web apps from frontend to backend. I care about clean code,
+          good UX, and shipping things that actually work.
+        </p>
+        <div class="hero-actions">
+          <a href="/projects" class="btn btn-primary">View Projects</a>
+          <a href="/contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+      </div>
+  
+      <div class="hero-avatar-wrap">
+        <div class="blob-ring"></div>
+        <img class="hero-avatar" src="/picture.png" alt="Nelson Martinel" />
+      </div>
     </div>
   </section>
 
@@ -89,20 +97,81 @@ try {
 
   <!-- ── Currently ────────────────────────────────────── -->
   <section class="section">
-    <p class="section-label">Currently</p>
-    <div class="currently-grid">
-      <div class="currently-item">
-        <span class="currently-key">Building</span>
-        <span class="currently-val">My portfolio with Astro + Supabase</span>
+    <p class="section-label">Who I am</p>
+    <div class="bento-grid">
+  
+      <div class="bento-card card-big" data-tilt>
+        <div class="bento-stack">
+          <div>
+            <p class="bento-label">currently building</p>
+            <p class="bento-title">Full Stack Developer</p>
+            <p class="bento-sub">Turning ideas into apps — from pixel-perfect UIs to solid backends.</p>
+            <div class="bento-chips">
+              <span class="bento-chip">React</span>
+              <span class="bento-chip">Next.js</span>
+              <span class="bento-chip">Astro</span>
+              <span class="bento-chip">Supabase</span>
+            </div>
+          </div>
+          <div class="bento-loc">
+            <span class="dot"></span>
+            <span>Available · Ghent, Belgium</span>
+          </div>
+        </div>
       </div>
-      <div class="currently-item">
-        <span class="currently-key">Learning</span>
-        <span class="currently-val">TypeScript & system design patterns</span>
+  
+      <div class="bento-card card-sm" data-tilt>
+        <p class="bento-label">age</p>
+        <p class="bento-bignum">{age}</p>
+        <p class="bento-sub">years old</p>
       </div>
-      <div class="currently-item">
-        <span class="currently-key">Studying</span>
-        <span class="currently-val">Graduate Programming at Artevelde</span>
+  
+      <div class="bento-card card-sm" data-tilt>
+        <p class="bento-label">focus</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="bento-icon" aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+        <p class="bento-title" style="font-size: 0.9rem;">Full Stack</p>
+        <p class="bento-sub" style="font-size: 0.75rem;">Frontend → Backend</p>
       </div>
+  
+      <div class="bento-card card-wide" data-tilt>
+        <p class="bento-label">learning right now</p>
+        <p class="bento-title">TypeScript & system design</p>
+        <div class="bento-bars">
+          <div class="bento-bar-item">
+            <div class="bento-bar-label"><span>TypeScript</span><span>75%</span></div>
+            <div class="bento-bar-track"><div class="bento-bar-fill" style="width: 75%"></div></div>
+          </div>
+          <div class="bento-bar-item">
+            <div class="bento-bar-label"><span>System design</span><span>45%</span></div>
+            <div class="bento-bar-track"><div class="bento-bar-fill" style="width: 45%"></div></div>
+          </div>
+          <div class="bento-bar-item">
+            <div class="bento-bar-label"><span>Docker</span><span>60%</span></div>
+            <div class="bento-bar-track"><div class="bento-bar-fill" style="width: 60%"></div></div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="bento-card card-tall" data-tilt>
+        <p class="bento-label">studying</p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="bento-icon" aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"/><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"/></svg>
+        <p class="bento-title">Graduate Programming</p>
+        <p class="bento-sub">Artevelde Hogeschool · 2023 — present</p>
+        <p class="bento-sub" style="margin-top: 10px;">Real-world projects, software architecture, modern frameworks.</p>
+      </div>
+  
+      <div class="bento-card card-sm" data-tilt>
+        <p class="bento-label">portfolio</p>
+        <p class="bento-bignum" style="font-size: 2rem;">↗</p>
+        <p class="bento-sub" style="font-size: 0.75rem;">Astro + Supabase</p>
+      </div>
+  
+      <div class="bento-card card-sm" data-tilt>
+        <p class="bento-label">based in</p>
+        <p class="bento-title" style="font-size: 0.9rem; margin-top: 8px;">Ghent, Belgium</p>
+        <p class="bento-sub">🇧🇪</p>
+      </div>
+  
     </div>
   </section>
 
@@ -237,14 +306,77 @@ try {
     </div>
   </section>
 
+  <script>
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect()
+        const x = e.clientX - r.left
+        const y = e.clientY - r.top
+        const rotX = ((y - r.height / 2) / (r.height / 2)) * -8
+        const rotY = ((x - r.width / 2) / (r.width / 2)) * 8
+        card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`
+        card.style.setProperty('--mx', (x / r.width * 100) + '%')
+        card.style.setProperty('--my', (y / r.height * 100) + '%')
+      })
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = ''
+      })
+    })
+  </script>
 </Base>
 
 <style>
-  /* ── Hero ───────────────────────────────────────────── */
+  /* ── Hero layout update ─────────────────────────────── */
   .hero {
     padding: 48px 0 80px;
-    max-width: 680px;
   }
+  
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    max-width: 820px;
+  }
+  
+  .hero-text {
+    max-width: 560px;
+  }
+  
+  .hero-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blob-ring {
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, #AFA9EC, #5DCAA5);
+  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+  animation: morph 5s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 58% 42% 52% 48% / 44% 56% 40% 60%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  animation: morph 5s ease-in-out infinite;
+  border: 3px solid var(--bg);
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+  50%       { border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%; }
+}
 
   .hero-eyebrow {
     display: flex;
@@ -386,36 +518,142 @@ try {
   }
 
   /* ── Currently ───────────────────────────────────────── */
-  .currently-grid {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
+  /* ── Bento grid ──────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
 
-  .currently-item {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-  }
+.bento-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 20px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.08s ease;
+  will-change: transform;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.15);
+}
 
-  .currently-item:last-child { border-bottom: none; }
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
 
-  .currently-key {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    min-width: 72px;
-    letter-spacing: 0.04em;
-  }
+.bento-card:hover::before { opacity: 1; }
 
-  .currently-val {
-    font-size: 0.9rem;
-    color: var(--text);
-  }
+.card-big  { grid-column: span 2; grid-row: span 2; }
+.card-wide { grid-column: span 2; }
+.card-tall { grid-row: span 2; }
+.card-sm   {}
+
+.bento-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.bento-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.bento-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.bento-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.bento-bignum {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  margin: 10px 0 4px;
+}
+
+.bento-icon {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.bento-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.bento-chip {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(127, 119, 221, 0.4);
+  color: #7F77DD;
+  background: rgba(127, 119, 221, 0.08);
+}
+
+.bento-loc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+.bento-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.bento-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.bento-bar-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bento-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #7b61ff, #5DCAA5);
+}
 
   /* ── Carousel ────────────────────────────────────────── */
   .carousel-wrapper {
@@ -650,10 +888,26 @@ try {
     color: var(--accent);
   }
 
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .bar { animation: none; height: 10px; }
+  }
+
   /* ── Mobile ──────────────────────────────────────────── */
   @media (max-width: 600px) {
     .hero { padding: 32px 0 60px; }
+    
     .leetcode-stats { grid-template-columns: repeat(2, 1fr); }
+    
     .timeline-header { flex-direction: column; gap: 2px; }
+    
+    .hero-inner {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    .hero-avatar-wrap {
+      align-self: center;
+    }
   }
 </style>
